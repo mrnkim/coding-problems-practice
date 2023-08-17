@@ -14,10 +14,20 @@
  *  [-1, 1, 0, -3, 3] => [0, 0, 9, 0, 0]
  *
  * Approach:
- * 
  *
- *
+ * pre :  (1), 1, 2, 6
+ * post: 24, 12, 4, (1)
+ * output: (1)*24, 1*12, 2*4, 6*(1)
  *
  */
 
-//Testing pull request//
+function productExceptSelf(nums) {
+  let result = [];
+  let pre = 1;
+  let post = 1;
+
+  for (let i=0; i<nums.length-1; i++) {
+result[i] = pre;
+pre *= nums[i]
+  }
+}
