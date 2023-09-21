@@ -17,8 +17,13 @@
  */
 
 function reverse(string) {
-  if (string.length < 1) {
+  if (string.length < 2) {
     return string;
+  }
+
+  // add validations for non-string or falsy types
+  if (!string || typeof string !== "string") {
+    return false;
   }
 
   const resultArr = [];
