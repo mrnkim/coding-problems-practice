@@ -1,4 +1,4 @@
-const reverse = require("../reverse");
+const reverse = require("../Done/reverse");
 
 describe("reverse", function () {
   it("is a function", function () {
