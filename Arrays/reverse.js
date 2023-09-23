@@ -1,4 +1,4 @@
-/**
+/** DONE
  * Goal: reverses the given string
  *
  * Input: string
