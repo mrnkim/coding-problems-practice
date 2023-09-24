@@ -1,31 +1,24 @@
 /** 88. Merge Sorted Array
-
  *
  * Goal: Merge two arrays in order
  *
- * Input: array1, m (number of array1), array2, n (number of array2)
+ * Input: array1, m (number of items in array1), array2, n (number of items in array2)
  *        (array 1 & 2 consist of integers)
  * Output: array (consist of integers in array 1 & 2, sorted)
  *
  * Case 1:
- * [1,4,4,5], 4, [0,1,3,5,9], 5 => [0,1,1,3,4,4,5,9]
- * [0,1,4,4,5], [1,3,5,9]
- * [0,1,1,4,4,5], [3,5,9]
- * [0,1,1,3,4,4,5], [3,5,9]
- * Case 2:
- * [1,4,4], 3, [2,3,5,9], 4 => [1,2,3,4,4,5,9]
+ * nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+ * =>  [1,2,2,3,5,6]
  *
- * Case 3:
- * [0], 0, [1], 1 => [1]
+ * Case 2:
+ * nums1 = [1], m = 1, nums2 = [], n = 0
+ * => [1]
+ *
+ * Case 3: nums1 = [0], m = 0, nums2 = [1], n = 1
+ * => [1]
  *
  * Approach:
- *
- * 1. Compare the two first integer in array1 (a) and array2 (a')
- *  - a > a'? -> remove a' from array2 and put it in front of a
- *  - a <= a'? -> remove a' from array2 and put it after a
- * 2. Move on to the second, third... integer in array2 and do comparison
- * 3. When finished, concat 'front', array1, and 'back' array
- *
- *
- *
+ * Compare the two last items in each array and put bigger num to the very last index
+ * For the array that had bigger num => Move on to the next last item
+ * Repeat until both pointers are 0
  */
