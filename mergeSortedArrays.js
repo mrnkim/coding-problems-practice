@@ -24,33 +24,28 @@
  */
 
 function mergeSortedArray(nums1, m, nums2, n) {
-  let i = m - 1; //2
-  let j = n - 1; //0
-  let last = m + n - 1; //3
-  //[1,2,3,0,5,6]
+  let i = m - 1;
+  let j = n - 1;
+  let last = m + n - 1;
 
   while (i >= 0 || j >= 0) {
-    if (j < 0) {
+    if (j < 0 || nums1[i] > nums2[j]) {
       nums1[last] = nums1[i];
       i--;
-    }
-    if (i < 0) {
+    } else {
       nums1[last] = nums2[j];
       j--;
     }
-
-    if (nums1[i] > nums2[j]) {
-      nums1[last] = nums1[i];
-      i--;
-    }
-
-    if (nums1[i] <= nums2[j]) {
-      nums1[last] = nums2[j];
-      j--;
-    }
-
     last--;
   }
 
   return nums1;
 }
+
+/* Improvement: using multiple if statements to compare the elements means that
+more than one assignment can occur in each iteration of the loop.
+This can overwrite values in nums1 and lead to incorrect results.
+
+To fix this issue, you should use if-else statements to ensure that only one assignment
+is made in each iteration.
+*/
