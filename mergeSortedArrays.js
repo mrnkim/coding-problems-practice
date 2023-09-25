@@ -22,3 +22,35 @@
  * For the array that had bigger num => Move on to the next last item
  * Repeat until both pointers are 0
  */
+
+function mergeSortedArray(nums1, m, nums2, n) {
+  let i = m - 1; //2
+  let j = n - 1; //0
+  let last = m + n - 1; //3
+  //[1,2,3,0,5,6]
+
+  while (i >= 0 || j >= 0) {
+    if (j < 0) {
+      nums1[last] = nums1[i];
+      i--;
+    }
+    if (i < 0) {
+      nums1[last] = nums2[j];
+      j--;
+    }
+
+    if (nums1[i] > nums2[j]) {
+      nums1[last] = nums1[i];
+      i--;
+    }
+
+    if (nums1[i] <= nums2[j]) {
+      nums1[last] = nums2[j];
+      j--;
+    }
+
+    last--;
+  }
+
+  return nums1;
+}
