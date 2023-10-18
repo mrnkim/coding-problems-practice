@@ -16,11 +16,15 @@ class HashTable {
     let address = this._hash(key);
     let bin = this.data[address];
     if (bin) {
+      // result array is to deal with multiple values for a single key
+      let result = [];
       for (let pair of bin) {
         if (pair[0] === key) {
-          return pair[1];
+          result.push(pair[1]);
         }
       }
+      if (result.length === 1) return result[0];
+      return result;
     } else return undefined;
   }
 
@@ -34,8 +38,11 @@ class HashTable {
   }
 }
 
+// Run the code
 const myHashTable = new HashTable(50);
+
 console.log(myHashTable);
 console.log(myHashTable.set("grapes", 10000));
+console.log(myHashTable.set("grapes", 20000));
+console.log(myHashTable.data);
 console.log(myHashTable.get("grapes"));
-console.log(myHashTable.get("grapess"));
