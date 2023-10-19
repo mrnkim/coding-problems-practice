@@ -3,6 +3,15 @@ class HashTable {
     this.data = new Array(size);
   }
 
+  //_ means it is a private property
+  _hash(key) {
+    let hash = 0;
+    for (let i = 0; i < key.length; i++) {
+      hash = (hash + key.charCodeAt(i) * i) % this.data.length;
+    }
+    return hash;
+  }
+
   set(key, value) {
     let address = this._hash(key);
     if (!this.data[address]) {
@@ -28,13 +37,17 @@ class HashTable {
     } else return undefined;
   }
 
-  //_ means it is a private property
-  _hash(key) {
-    let hash = 0;
-    for (let i = 0; i < key.length; i++) {
-      hash = (hash + key.charCodeAt(i) * i) % this.data.length;
+  keys() {
+    const bins = this.data;
+    let keys = new Set();
+    for (let bin of bins) {
+      if (bin) {
+        for (let pair of bin) {
+          keys.add(pair[0]);
+        }
+      }
     }
-    return hash;
+    return keys;
   }
 }
 
@@ -46,3 +59,4 @@ console.log(myHashTable.set("grapes", 10000));
 console.log(myHashTable.set("grapes", 20000));
 console.log(myHashTable.data);
 console.log(myHashTable.get("grapes"));
+console.log(myHashTable.keys());
