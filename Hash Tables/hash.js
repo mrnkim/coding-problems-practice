@@ -57,6 +57,7 @@ const myHashTable = new HashTable(50);
 console.log(myHashTable);
 console.log(myHashTable.set("grapes", 10000));
 console.log(myHashTable.set("grapes", 20000));
+console.log(myHashTable.set("apples", 30000));
 console.log(myHashTable.data);
 console.log(myHashTable.get("grapes"));
 console.log(myHashTable.keys());
