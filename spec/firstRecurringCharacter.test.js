@@ -1,4 +1,4 @@
-const firstRecurringCharacter = require("../Hash Tables/firstRecurringCharacter");
+const firstRecurringCharacter = require("../HashTables/firstRecurringCharacter");
 
 describe("firstRecurringCharacter", function () {
   it("is a function", function () {

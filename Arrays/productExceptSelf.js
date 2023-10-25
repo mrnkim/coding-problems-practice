@@ -1,6 +1,6 @@
 "use strict";
 
-/**
+/** DONE
  * Goal: return an array that has the products of nums, except for the num at the
  * index at the input array
  *
