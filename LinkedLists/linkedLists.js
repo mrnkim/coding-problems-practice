@@ -47,6 +47,7 @@ class LinkedList {
     return this;
   }
 
+//TODO: finish
   insert(index, value) {
     const newNode = new Node(value);
     let currNode = this.head;
@@ -54,7 +55,7 @@ class LinkedList {
 
     while (i <= index) {
       currNodeIndex = 0;
-      currNode.next = 
+      currNode.next =
     }
 
   }
