@@ -47,17 +47,45 @@ class LinkedList {
     return this;
   }
 
-//TODO: finish
   insert(index, value) {
-    const newNode = new Node(value);
-    let currNode = this.head;
-    let nextNode = currNode.next;
-
-    while (i <= index) {
-      currNodeIndex = 0;
-      currNode.next =
+    if (index >= this.length) {
+      this.append(value);
+      this.length += 1;
+      return this.printList();
     }
 
+    const insertingNode = new Node(value);
+    const leaderNode = this.traverse(index - 1);
+    const nextNode = leaderNode.next;
+    leaderNode.next = insertingNode;
+    insertingNode.next = nextNode;
+    this.length += 1;
+    return this.printList();
+  }
+
+  remove(index) {
+    if (index >= this.length - 1) {
+      const leaderNode = this.traverse(this.length - 2);
+      leaderNode.next = null;
+      this.length -= 1;
+      return this.printList();
+    }
+
+    const leaderNode = this.traverse(index - 1);
+    const removingNode = leaderNode.next;
+    leaderNode.next = removingNode.next;
+    this.length -= 1;
+    return this.printList();
+  }
+
+  traverse(index) {
+    let counter = 0;
+    let currentNode = this.head;
+    while (counter < index) {
+      currentNode = currentNode.next;
+      counter += 1;
+    }
+    return currentNode;
   }
 }
 
@@ -68,4 +96,8 @@ console.log(myLinkedList.append(6));
 console.log(myLinkedList.append(3));
 console.log(myLinkedList.append(2));
 console.log(myLinkedList.prepend(1));
+console.log(myLinkedList.prepend(1));
 console.log(myLinkedList.printList());
+console.log(myLinkedList.insert(2, 99));
+console.log(myLinkedList.remove(6));
+console.log(myLinkedList.remove(2));
