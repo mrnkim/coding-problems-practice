@@ -57,6 +57,6 @@ function decode(string) {
   return decoded;
 }
 
-console.log(encode(["we", "3say3", ":", "", "yes"]));
-console.log(decode("2we53say31:03yes"));
-console.log(encodeAndDecodeStrings(["we", "3say3", ":", "", "yes"]))
+console.log(encode(["4lint","code","love","you"]));
+console.log(decode("54lint4code4love3you"));
+console.log(encodeAndDecodeStrings(["4lint","code","love","you"]))
