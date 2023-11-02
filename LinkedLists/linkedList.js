@@ -90,14 +90,14 @@ class LinkedList {
 }
 
 // console
-const myLinkedList = new LinkedList(10);
+const myDoublyLinkedList = new LinkedList(10);
 
-console.log(myLinkedList.append(6));
-console.log(myLinkedList.append(3));
-console.log(myLinkedList.append(2));
-console.log(myLinkedList.prepend(1));
-console.log(myLinkedList.prepend(1));
-console.log(myLinkedList.printList());
-console.log(myLinkedList.insert(2, 99));
-console.log(myLinkedList.remove(6));
-console.log(myLinkedList.remove(2));
+console.log(myDoublyLinkedList.append(6));
+console.log(myDoublyLinkedList.append(3));
+console.log(myDoublyLinkedList.append(2));
+console.log(myDoublyLinkedList.prepend(1));
+console.log(myDoublyLinkedList.prepend(1));
+console.log(myDoublyLinkedList.printList());
+console.log(myDoublyLinkedList.insert(2, 99));
+console.log(myDoublyLinkedList.remove(6));
+console.log(myDoublyLinkedList.remove(2));
