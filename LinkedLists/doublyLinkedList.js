@@ -27,9 +27,10 @@ class DoublyLinkedList {
 
   append(value) {
     const newTail = new Node(value);
-    this.tail.next = newTail;
-    newTail.previous = this.tail;
 
+    newTail.previous = this.tail;
+    this.tail.next = newTail;
+    this.tail = newTail;
     this.length += 1;
 
     return this;
@@ -38,8 +39,9 @@ class DoublyLinkedList {
   prepend(value) {
     const newHead = new Node(value);
 
+    newHead.next = this.head; //새 node부터 순서대로 꼬리에 꼬리를 물듯이...
     this.head.previous = newHead;
-    newHead.next = this.head;
+    this.head = newHead;
     this.length += 1;
 
     return this;
@@ -57,9 +59,9 @@ class DoublyLinkedList {
     const followingNode = leaderNode.next;
 
     leaderNode.next = insertingNode;
-    followingNode.previous = insertingNode;
     insertingNode.previous = leaderNode;
     insertingNode.next = followingNode;
+    followingNode.previous = insertingNode;
     this.length += 1;
     return this.printList();
   }
@@ -74,8 +76,9 @@ class DoublyLinkedList {
 
     const leaderNode = this.traverse(index - 1);
     const removingNode = leaderNode.next;
-    leaderNode.next = removingNode.next;
-    removingNode.previous = leaderNode;
+    const followingNode = removingNode.next;
+    leaderNode.next = followingNode;
+    followingNode.previous = leaderNode;
     this.length -= 1;
     return this.printList();
   }
@@ -91,16 +94,14 @@ class DoublyLinkedList {
   }
 }
 
-// console
+// Tests
 const myDoublyLinkedList = new DoublyLinkedList(10);
 console.log(myDoublyLinkedList.printList());
-
 console.log(myDoublyLinkedList.append(6));
 console.log(myDoublyLinkedList.printList());
 console.log(myDoublyLinkedList.prepend(1));
 console.log(myDoublyLinkedList.printList());
-console.log(myDoublyLinkedList.prepend(1));
-console.log(myDoublyLinkedList.printList());
 console.log(myDoublyLinkedList.insert(2, 99));
-console.log(myDoublyLinkedList.remove(6));
 console.log(myDoublyLinkedList.remove(2));
+console.log(myDoublyLinkedList.traverse(2));
+console.log(myDoublyLinkedList.printList());
