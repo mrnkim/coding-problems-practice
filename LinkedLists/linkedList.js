@@ -89,23 +89,42 @@ class LinkedList {
     return currentNode;
   }
 
+  // reverse() {
+  //   if (!this.head.next) {
+  //     return this.head;
+  //   }
+  //   let first = this.head;
+  //   this.tail = this.head;
+  //   let second = first.next;
+
+  //   while (second) {
+  //     const temp = second.next;
+  //     second.next = first;
+  //     first = second;
+  //     second = temp;
+  //   }
+  //   this.head.next = null;
+  //   this.head = first;
+
+  //   return this;
+  // }
+
   reverse() {
-    if (!this.head.next) {
-      return this.head;
+    // (null ->) 1 -> 2 -> 3
+    let prev = null;
+    let curr = this.head;
+    // 1 -> null
+    while (curr) {
+      //3
+      let currNext = curr.next || null;
+      if (currNext === null) {
+        this.tail = curr;
+      } // null
+      curr.next = prev; // 3 -> 2 ->  1 -> null
+      prev = curr; // 3
+      curr = currNext; // null
     }
-    let first = this.head;
-    this.tail = this.head;
-    let second = first.next;
-
-    while (second) {
-      const temp = second.next;
-      second.next = first;
-      first = second;
-      second = temp;
-    }
-    this.head.next = null;
-    this.head = first;
-
+    this.head = prev;
     return this;
   }
 }
@@ -123,4 +142,4 @@ console.log(myDoublyLinkedList.insert(2, 99));
 // console.log(myDoublyLinkedList.remove(2));
 // console.log(myDoublyLinkedList);
 console.log(myDoublyLinkedList.reverse());
-// console.log(myDoublyLinkedList.printList());
+console.log(myDoublyLinkedList.printList());
