@@ -67,6 +67,7 @@ class LinkedList {
     if (index >= this.length - 1) {
       const leaderNode = this.traverse(this.length - 2);
       leaderNode.next = null;
+      this.tail = leaderNode;
       this.length -= 1;
       return this.printList();
     }
@@ -87,6 +88,26 @@ class LinkedList {
     }
     return currentNode;
   }
+
+  reverse() {
+    if (!this.head.next) {
+      return this.head;
+    }
+    let first = this.head;
+    this.tail = this.head;
+    let second = first.next;
+
+    while (second) {
+      const temp = second.next;
+      second.next = first;
+      first = second;
+      second = temp;
+    }
+    this.head.next = null;
+    this.head = first;
+
+    return this;
+  }
 }
 
 // console
@@ -96,8 +117,10 @@ console.log(myDoublyLinkedList.append(6));
 console.log(myDoublyLinkedList.append(3));
 console.log(myDoublyLinkedList.append(2));
 console.log(myDoublyLinkedList.prepend(1));
-console.log(myDoublyLinkedList.prepend(1));
 console.log(myDoublyLinkedList.printList());
 console.log(myDoublyLinkedList.insert(2, 99));
-console.log(myDoublyLinkedList.remove(6));
-console.log(myDoublyLinkedList.remove(2));
+// console.log(myDoublyLinkedList.remove(6));
+// console.log(myDoublyLinkedList.remove(2));
+// console.log(myDoublyLinkedList);
+console.log(myDoublyLinkedList.reverse());
+// console.log(myDoublyLinkedList.printList());
