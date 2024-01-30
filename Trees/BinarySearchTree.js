@@ -11,7 +11,19 @@ class BinarySearchTree {
     this.root = null;
   }
 
-  insert(value) {}
+  insert(value) {
+    const newNode = new Node(value);
+
+    if (!this.root) {
+      this.root = newNode;
+    } else {
+      if (newNode.value > this.root.value) {
+        this.root.right = newNode;
+      } else if (newNode.value < this.root.value) {
+        this.root.left = newNode;
+      } 
+    }
+  }
 
   lookup(value) {}
 
