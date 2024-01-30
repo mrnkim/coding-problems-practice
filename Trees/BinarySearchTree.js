@@ -17,11 +17,23 @@ class BinarySearchTree {
     if (!this.root) {
       this.root = newNode;
     } else {
-      if (newNode.value > this.root.value) {
-        this.root.right = newNode;
-      } else if (newNode.value < this.root.value) {
-        this.root.left = newNode;
-      } 
+      let currentNode = this.root;
+
+      while (true) {
+        if (newNode.value > currentNode.value) {
+          if (!currentNode.right) {
+            currentNode.right = newNode;
+            return this;
+          }
+          currentNode = currentNode.right;
+        } else if (newNode.value < currentNode.value) {
+          if (!currentNode.left) {
+            currentNode.left = newNode;
+            return this;
+          }
+          currentNode = currentNode.left;
+        } else return this;
+      }
     }
   }
 
@@ -29,3 +41,10 @@ class BinarySearchTree {
 
   //remove
 }
+
+let newBst = new BinarySearchTree();
+// console.log(newBst);
+console.log(newBst.insert(1));
+console.log(newBst.insert(3));
+console.log(newBst.insert(5));
+// console.log(newBst);
